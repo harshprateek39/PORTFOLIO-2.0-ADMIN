@@ -7,6 +7,8 @@ import axios from 'axios';
 import { verify } from "../assets/util/verification";
 import { loginStatus } from "../store/slices/loginSlice";
 const Login = () => { 
+
+   console.log("ddddddd",process.env.REACT_APP_SERVER_PORT);
   
  const navigate=useNavigate();
  const verification=async()=>{
@@ -33,7 +35,7 @@ const dispatch =useDispatch();
     e.preventDefault();
     try {
       
-      const res= await axios.post("http://localhost:8000/api/v1/auth/login",{email:formData.email,password:formData.password}, { withCredentials: true });
+      const res= await axios.post(`${process.env.REACT_APP_SERVER_PORT}/auth/login`,{email:formData.email,password:formData.password}, { withCredentials: true });
       console.log(res.data);
       navigate("/");
       dispatch(loginStatus(true));

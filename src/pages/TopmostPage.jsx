@@ -51,9 +51,10 @@ const TopmostPage = ({titlee,components}) => {
   const navigate=useNavigate();
   const verify=async()=>{
     try {
-      const data=await  axios.get('http://localhost:8000/verify',{withCredentials: true})
+      const data=await  axios.get('https://portfolio-20-server.vercel.app/verify',{withCredentials: true})
       console.log(data);
      } catch (error) {
+      console.log(error)
       navigate("/login")
      }
   }
